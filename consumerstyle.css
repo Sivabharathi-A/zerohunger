@@ -1,0 +1,638 @@
+/* Original CSS (consumerstyle.css) with modifications */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.container {
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 5px;
+    background: #ddd;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.progress-step {
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #666;
+    z-index: 2;
+    position: relative;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.progress-step.active {
+    background: #007bff;
+    color: white;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.status {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 40%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.star.selected {
+    color: gold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.popup button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#feedbackSection {
+    display: none;
+    /* Hides feedback until order is placed */
+}
+
+#feedbackPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Popup Background */
+.popup {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Transparent Black */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Box */
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+#closePopup {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: none;
+    background: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#closePopup:hover {
+    background: #218838;
+}
+
+#signOutButton {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#signOutButton:hover {
+    background-color: #d32f2f;
+}
+
+.carousel {
+    background-color: white;
+    position: relative;
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    flex: 1 0 auto;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.carousel-item h3 {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.carousel-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.carousel-control {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.service-section {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 8px;
+}
+
+.service-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+.service-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: black;
+}
+
+.service-card p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.service-card i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #d7f611;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #d7eb54;
+    color: black;
+    padding: 15px 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.user-info {
+    position: relative;
+    cursor: pointer;
+}
+
+#userIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 200px;
+}
+
+.dropdown p {
+    margin: 5px 0;
+}
+
+
+.filter-section {
+    background: white;
+    padding: 20px;
+    margin: 5% 10%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section h2 {
+    margin-top: 0;
+}
+
+.filter-section input,
+.filter-section select,
+.filter-section button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filter-section button {
+    background: #ddf927;
+    color: black;
+    cursor: pointer;
+    width: 200px;
+    display: block; /* Make the button a block element */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.filter-section button:hover {
+    background: #d9ff52;
+    /* Darker Blue */
+}
+
+.product-list,
+.wishlist-section,
+.cart-section,
+.chat {
+    background: white;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-list h2,
+.wishlist-section h2,
+.cart-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.products {
+    display: block;
+    text-align: center;
+
+}
+
+.product-item {
+    width: 250px;
+    height: 250px;
+    margin: 10px 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-item h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.product-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+.product-list {
+    border-left: 5px solid #ff9800;
+}
+
+.wishlist-section {
+    border-left: 5px solid #4CAF50;
+}
+
+.cart-section {
+    border-left: 5px solid #3f51b5;
+}
+
+.wishlist-button,
+.cart-button {
+    margin: 5px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 80%;
+    max-width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.wishlist-button {
+    background: linear-gradient(to right, #ffdb58, #ffc107);
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.wishlist-button:hover {
+    background: linear-gradient(to right, #ffe57f, #ffd700);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+
+.cart-button {
+    background: linear-gradient(to right, #42a5f5, #2196f3);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cart-button:hover {
+    background: linear-gradient(to right, #64b5f6, #1e88e5);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.remove-wishlist,
+.remove-cart {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 80%;
+    max-width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.remove-wishlist,
+.remove-cart {
+    background: linear-gradient(to right, #ef5350, #f44336);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.remove-wishlist:hover,
+.remove-cart:hover {
+    background: linear-gradient(to right, #f66a65, #e53935);
+    transform: scale(1.05);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.chat {
+    border-left: 5px solid #3f51b5;
+
+}
+
+.chat h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+#chatBox {
+    height: 150px;
+    overflow-y: auto;
+    background: #eef;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+
+#chatInput {
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: calc(40% - 100px);
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+#orderButton {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+    width: 200px;
+    /* Increased width of the order button */
+    align-self: center;
+    /* Center the order button */
+}
+#orderTrackingSection {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    /* display: none; Initially hidden */
+    text-align: center;
+    z-index: 0;
+}
+#orderTrackingSection h2{
+    margin-bottom: 20px;
+}
+#orderButton:hover {
+    background: #45a049;
+}

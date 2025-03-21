@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumer Dashboard</title>
+    <link rel="stylesheet" href="consumerstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="dashboardSection">
+        <header>
+            <h1>Consumer Dashboard</h1>
+        
+        <div class="user-info" onclick="toggleDropdown()">
+            <!-- <a href="https://www.flaticon.com/free-icons/user" title="user icons"></a> -->
+            <img src="account.jpg" alt="User" id="userIcon">
+            <div class="dropdown" id="userDropdown">
+                <p><strong>Username:</strong> <span id="farmerName">Siva Bharathi A</span></p>
+                <p><strong>Email:</strong> <span id="farmerEmail">sivu@gmail.com</span></p>
+                <p><strong>Location:</strong> <span id="farmerLocation">India</span></p>
+                <button id="signOutButton" onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+    </header>
+        <main>
+            <section class="carousel">
+                <div class="carousel-inner" id="carouselInner">
+                    <div class="carousel-item">
+                        <img src="cd3a1ad3-61f8-4e0a-8fc0-83dd00625353.jpeg" alt="Fresh Vegetables">
+                        <h3>Fresh Vegetables</h3>
+                        <p>Get the freshest vegetables delivered to your doorstep.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Flux_Dev_Vibrant_and_lively_farmers_market_scene_with_an_abund_0.jpeg" alt="Organic Fruits">
+                        <h3>Organic Fruits</h3>
+                        <p>Enjoy a variety of healthy, organic fruits.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="33b4102f-75f1-4b07-9694-9205f4ca133f.jpeg" alt="Healthy Grains">
+                        <h3>Healthy Grains</h3>
+                        <p>We provide various types of healthy grains.</p>
+                    </div>
+                     <div class="carousel-item">
+                        <img src="5288b9f0-b734-456f-a9ea-b07510eb9bc8.jpeg" alt="Dairy Products">
+                        <h3>Dairy Products</h3>
+                        <p>Get fresh and pure dairy products.</p>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control prev" onclick="prevSlide()">❮</button>
+                    <button class="carousel-control next" onclick="nextSlide()">❯</button>
+                </div>
+            </section>
+            
+            <section class="service-section">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Online Ordering</h3>
+                        <p>Order fresh produce from local farmers online.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-truck"></i>
+                        <h3>Delivery Service</h3>
+                        <p>Fast and reliable delivery to your doorstep.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Farmer Connections</h3>
+                        <p>Connect directly with local farmers.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-percent"></i>
+                        <h3>Discount Offers</h3>
+                        <p>Get exciting discount offers on various products.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="filter-section">
+                <h2>Filter Products</h2>
+                <input type="text" id="filterName" placeholder="Product Name">
+                <input type="number" id="filterPrice" placeholder="Max Price (₹)">
+                <select id="filterCategory">
+                    <option value="">All Categories</option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="grains">Grains</option>
+                    <option value="dairy">Dairy</option>
+                </select>
+                <select id="filterProducer">
+                    <option value="">All Producers</option>
+                </select>
+                <button id="filterButton">Filter</button>
+            </section>
+
+            <section class="product-list">
+                <h2>Available Products</h2>
+                <div id="productContainer" class="products"></div>
+            </section>
+
+            <section class="wishlist-section">
+                <h2>Wishlist</h2>
+                <div id="wishlistContainer" class="products"></div>
+            </section>
+
+            <section class="cart-section">
+                <h2>Cart</h2>
+                <div id="cartContainer" class="products"></div>
+                <button id="orderButton">Order Now</button>
+            </section>
+            <div class="container" id="orderTrackingSection">
+                <h2>Order Tracking</h2>
+                
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                    <div class="progress-step active">✔</div>
+                    <div class="progress-step">2</div>
+                    <div class="progress-step">3</div>
+                    <div class="progress-step">4</div>
+                    <div class="progress-step">5</div>
+                </div>
+                
+                <div class="progress-labels">
+                    <span>Ordered</span>
+                    <span>Packed</span>
+                    <span>Shipped</span>
+                    <span>Out for Delivery</span>
+                    <span>Delivered</span>
+                </div>
+            
+                <p class="status">Order Placed</p>
+            </div>
+            <section class="chat">
+                <h2>Chat with Consumers</h2>
+                <div id="chatBox"></div>
+                <input type="text" id="chatInput" placeholder="Type a message..." style="border-width: 0.5px;">
+                <button onclick="sendMessage()" style="border: none;background-color: #12c471;width: 70px;border-radius: 50px; padding: 8px;">Send</button>
+            </section>
+            <div id="feedbackPopup" class="popup">
+                <div class="popup-content">
+                    <h2>Provide Your Feedback</h2>
+                    <p>Your feedback helps us improve. Please rate your experience.</p>
+            
+                    <div class="rating-section">
+                        <p><strong>Product Quality:</strong></p>
+                        <div class="star-rating" id="productRating"></div>
+                    </div>
+            
+                    <div class="rating-section">
+                        <p><strong>Service Experience:</strong></p>
+                        <div class="star-rating" id="serviceRating"></div>
+                    </div>
+            
+                    <div class="rating-section">
+                        <p><strong>Farmer Communication:</strong></p>
+                        <div class="star-rating" id="farmerRating"></div>
+                    </div>
+            
+                    <textarea id="feedbackComment" placeholder="Additional Comments (Optional)"></textarea>
+            
+                    <button id="submitBtn " onclick="submitFeedback()">Submit Feedback</button>
+                </div>
+                <div id="feedbackPopup" class="popup">
+                    <div class="popup-content">
+                        <p>Thank you for your feedback!</p>
+                        <button id="closePopup">OK</button>
+                    </div>
+                </div>
+                <!-- Feedback Popup -->
+            
+            
+            </div>
+        </main>
+    
+    
+   
+    
+    <script>
+        // Sample order status (1 = Ordered, 2 = Packed, 3 = Shipped, etc.)
+        let currentStatus = 2; // Change this dynamically based on the order status
+    
+        function updateOrderTracking() {
+            const steps = document.querySelectorAll('.progress-step');
+            const statusText = document.querySelector('.status');
+    
+            const statusMessages = [
+                "Order Placed", 
+                "Order Packed", 
+                "Shipped", 
+                "Out for Delivery", 
+                "Delivered"
+            ];
+    
+            steps.forEach((step, index) => {
+                if (index <= currentStatus) {
+                    step.classList.add("active");
+                    step.innerHTML = "✔"; // Change to checkmark when completed
+                } else {
+                    step.classList.remove("active");
+                    step.innerHTML = index + 1; // Keep numbers for incomplete steps
+                }
+            });
+    
+            statusText.innerText = statusMessages[currentStatus];
+        }
+    
+        updateOrderTracking();
+    </script>
+        <footer style="background-color: #d7eb54; color: black; padding: 20px 10px; text-align: center; margin-top: 50px;">
+            <!-- Copyright -->
+            <div>
+                <p style="margin-top: 10px;flex: 1;">&copy; 2025 Farmer-Consumer. All Rights Reserved.</p>
+            </div>
+        </footer>
+        
+        <style>
+            footer div {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            footer a {
+                text-decoration: none;
+                font-size: 18px;
+            }
+            @media (max-width: 768px) {
+                footer div {
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+                footer div > div {
+                    width: 100%;
+                }
+            }
+        </style>
+        
+        <!-- FontAwesome for Icons -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+
+            const newTransformValue = -currentIndex * 100 + '%';
+            document.getElementById('carouselInner').style.transform = `translateX(${newTransformValue})`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        setInterval(nextSlide, 5000);
+        function toggleDropdown() {
+            let dropdown = document.getElementById("userDropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+        function signOut() {
+            // Redirect to the login page (index.html)
+            window.location.href = "index.html"; // Replace "index.html" with your actual login page name if different
+            // You might also want to clear any session data here, e.g., localStorage
+            localStorage.removeItem("farmerLoggedIn"); // Example: Remove login status
+        }
+
+        // Function to Load Products from Local Storage
+        function loadProducts() {
+            return JSON.parse(localStorage.getItem("farmerProducts")) || [];
+        }
+
+        // Function to Load Wishlist from Local Storage
+        function loadWishlist() {
+            return JSON.parse(localStorage.getItem("wishlist")) || [];
+        }
+
+        // Function to Save Wishlist to Local Storage
+        function saveWishlist(wishlist) {
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        }
+
+        // Function to Load Cart from Local Storage
+        function loadCart() {
+            return JSON.parse(localStorage.getItem("cart")) || [];
+        }
+
+        // Function to Save Cart to Local Storage
+        function saveCart(cart) {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+    
+
+        // Function to Display Products
+        function displayProducts(products) {
+            let productContainer = document.getElementById("productContainer");
+            productContainer.innerHTML = "";
+
+            if (products.length === 0) {
+                productContainer.innerHTML = "<p style='text-align: center;'>No products available.</p>";
+                return;
+            }
+
+            products.forEach((product, index) => {
+                let productElement = document.createElement("div");
+                productElement.classList.add("product-item");
+                productElement.innerHTML = `
+                    <p><h3>${product.productName}</h3> - ₹${product.price} (${product.category}) - Producer: ${product.producer}</p>
+                    <button class="wishlist-button" data-index="${index}">Wishlist</button>
+                    <button class="cart-button" data-index="${index}">Add to Cart</button>
+                `;
+                productContainer.appendChild(productElement);
+            });
+
+            // Event Listeners for Wishlist and Cart Buttons
+            document.querySelectorAll(".wishlist-button").forEach(button => {
+                button.addEventListener("click", addToWishlist);
+            });
+            document.querySelectorAll(".cart-button").forEach(button => {
+                button.addEventListener("click", addToCart);
+            });
+        }
+
+        // Function to Display Wishlist
+        function displayWishlist(wishlist) {
+            let wishlistContainer = document.getElementById("wishlistContainer");
+            wishlistContainer.innerHTML = "";
+
+            if (wishlist.length === 0) {
+                wishlistContainer.innerHTML = "<p style='text-align: center;'>Wishlist is empty.</p>";
+                return;
+            }
+
+            wishlist.forEach((product, index) => {
+                let productElement = document.createElement("div");
+                productElement.classList.add("product-item");
+                productElement.innerHTML = `
+                    <p style="padding-top:35px;"><h3>${product.productName}</h3> - ₹${product.price} (${product.category}) - Producer: ${product.producer}</p>
+                    <button class="remove-wishlist" data-index="${index}">Remove</button>
+                `;
+                wishlistContainer.appendChild(productElement);
+            });
+
+            document.querySelectorAll(".remove-wishlist").forEach(button => {
+                button.addEventListener("click", removeFromWishlist);
+            });
+        }
+
+        // Function to Display Cart
+        function displayCart(cart) {
+            let cartContainer = document.getElementById("cartContainer");
+            cartContainer.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = "<p style='text-align: center;'>Cart is empty.</p>";
+                return;
+            }
+
+            cart.forEach((product, index) => {
+                let productElement = document.createElement("div");
+                productElement.classList.add("product-item");
+                productElement.innerHTML = `
+                    <p style="padding-top:35px;"><h3>${product.productName}</h3> - ₹${product.price} (${product.category}) - Producer: ${product.producer}</p>
+                    <button class="remove-cart" data-index="${index}">Remove</button>
+                `;
+                cartContainer.appendChild(productElement);
+            });
+
+            document.querySelectorAll(".remove-cart").forEach(button => {
+                button.addEventListener("click", removeFromCart);
+            });
+        }
+
+        // Function to Filter Products
+        function filterProducts() {
+            let products = loadProducts();
+            let filterName = document.getElementById("filterName").value.toLowerCase();
+            let filterPrice = document.getElementById("filterPrice").value;
+            let filterCategory = document.getElementById("filterCategory").value;
+            let filterProducer = document.getElementById("filterProducer").value;
+
+            let filteredProducts = products.filter(product => {
+                return (
+                    (filterName === "" || product.productName.toLowerCase().includes(filterName)) &&
+                    (filterPrice === "" || product.price <= filterPrice) &&
+                    (filterCategory === "" || product.category === filterCategory) &&
+                    (filterProducer === "" || product.producer === filterProducer)
+                );
+            });
+
+            displayProducts(filteredProducts);
+        }
+
+        // Function to Add to Wishlist
+        function addToWishlist(event) {
+            let index = parseInt(event.target.dataset.index);
+            let products = loadProducts();
+            let product = products[index];
+            let wishlist = loadWishlist();
+
+            if (!wishlist.some(item => item.productName === product.productName)) {
+                wishlist.push(product);
+                saveWishlist(wishlist);
+                displayWishlist(wishlist);
+            }
+        }
+
+        // Function to Remove from Wishlist
+        function removeFromWishlist(event) {
+            let index = parseInt(event.target.dataset.index);
+            let wishlist = loadWishlist();
+            wishlist.splice(index, 1);
+            saveWishlist(wishlist);
+            displayWishlist(wishlist);
+        }
+
+        // Function to Add to Cart
+        function addToCart(event) {
+            let index = parseInt(event.target.dataset.index);
+            let products = loadProducts();
+            let product = products[index];
+            let cart = loadCart();
+
+            cart.push(product);
+            saveCart(cart);
+            displayCart(cart);
+        }
+
+        // Function to Remove from Cart
+        function removeFromCart(event) {
+            let index = parseInt(event.target.dataset.index);
+            let cart = loadCart();
+            cart.splice(index, 1);
+            saveCart(cart);
+            displayCart(cart);
+        }
+
+        // Populate Producer Filter
+        function populateProducerFilter() {
+            let products = loadProducts();
+            let producers = [...new Set(products.map(product => product.producer))];
+            let producerSelect = document.getElementById("filterProducer");
+
+            producers.forEach(producer => {
+                let option = document.createElement("option");
+                option.value = producer;
+                option.textContent = producer;
+                producerSelect.appendChild(option);
+            });
+        }
+
+        // Event Listener for Filter Button
+        document.getElementById("filterButton").addEventListener("click", filterProducts);
+
+        // Event Listener for Order Button
+        document.getElementById("orderButton").addEventListener("click", () => {
+            alert("Order placed successfully!");
+            localStorage.removeItem("cart");
+            displayCart([]);
+        });
+
+        // Load products on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            let products = loadProducts();
+            displayProducts(products);
+            populateProducerFilter();
+            displayWishlist(loadWishlist());
+            displayCart(loadCart());
+
+        });
+        function sendMessage() {
+            let chatBox = document.getElementById("chatBox");
+            let chatInput = document.getElementById("chatInput");
+            let message = chatInput.value.trim();
+            if (message !== "") {
+                let msgElement = document.createElement("p");
+                msgElement.textContent = "Consumer: " + message;
+                chatBox.appendChild(msgElement);
+                chatInput.value = "";
+            }
+        }
+        document.getElementById("orderButton").addEventListener("click", function () {
+    alert("Order placed successfully!");
+    localStorage.removeItem("cart");
+    displayCart([]);
+
+    setTimeout(showFeedbackPopup, 1000); // Show feedback popup after 1 sec
+});
+
+
+
+    function createStarRating(containerId) {
+        let container = document.getElementById(containerId);
+        container.innerHTML = ""; 
+        for (let i = 1; i <= 5; i++) {
+            let star = document.createElement("span");
+            star.innerHTML = "★";
+            star.classList.add("star");
+            star.dataset.value = i;
+            star.onclick = function() {
+                setRating(containerId, i);
+            };
+            container.appendChild(star);
+        }
+    }
+
+    function setRating(containerId, value) {
+        let stars = document.getElementById(containerId).querySelectorAll(".star");
+        stars.forEach((star, index) => {
+            star.classList.toggle("selected", index < value);
+        });
+        document.getElementById(containerId).setAttribute("data-rating", value);
+    }
+    function updateStars(container, selectedRating) {
+    let stars = container.getElementsByClassName("star");
+
+    for (let i = 0; i < stars.length; i++) {
+        if (i < selectedRating) {
+            stars[i].classList.add("selected");
+        } else {
+            stars[i].classList.remove("selected");
+        }
+    }
+}
+
+    function submitFeedback() {
+        let productRating = document.getElementById("productRating").getAttribute("data-rating");
+        let serviceRating = document.getElementById("serviceRating").getAttribute("data-rating");
+        let farmerRating = document.getElementById("farmerRating").getAttribute("data-rating");
+        let feedbackComment = document.getElementById("feedbackComment").value.trim();
+
+        if (!productRating || !serviceRating || !farmerRating) {
+            alert("Please provide a rating for all categories.");
+            return;
+        }
+
+        let feedbackData = {
+            productRating: productRating,
+            serviceRating: serviceRating,
+            farmerRating: farmerRating,
+            additionalComments: feedbackComment
+        };
+
+        console.log("Feedback Submitted:", feedbackData);
+        alert("Thank you for your feedback!");
+        document.getElementById("feedbackPopup").style.display = "none";}
+
+
+       
+    // Initialize star ratings
+    createStarRating("productRating");
+    createStarRating("serviceRating");
+    createStarRating("farmerRating");
+
+    function showFeedbackPopup() {
+    let feedbackPopup = document.getElementById("feedbackPopup");
+    feedbackPopup.style.display = "flex"; // Show the feedback popup
+    createStarRating("productRating"); 
+    createStarRating("serviceRating");
+    createStarRating("farmerRating");
+}
+    </script>
+</body>
+</html>

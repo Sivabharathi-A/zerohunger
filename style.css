@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(Flux_Dev_A_vibrant_and_modern_ecommerce_background_for_a_carou_0.jpeg);
+    background-size: cover;
+    perspective: 1000px;
+}
+.terms-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 80%;
+    max-width: 500px;
+}
+
+.terms-popup h2 {
+    margin-bottom: 10px;
+}
+
+.terms-popup p {
+    margin-bottom: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    color: #000;
+}
+
+.terms-popup button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Flip Box */
+.container {
+    width: 400px;
+    height: 500px;
+    position: relative;
+}
+
+.flip-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+.flip-box-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.flip-box-front, .flip-box-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Farmer Login */
+.flip-box-front {
+    background: linear-gradient(135deg, #3ad769, #1f793a);
+}
+
+/* Consumer Login */
+.flip-box-back {
+    background: linear-gradient(135deg, #bee141, #b6e313c9);
+    transform: rotateY(180deg);
+}
+
+/* Signup Forms */
+.signup-form {
+    display: none;
+}
+
+/* Input Fields */
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Login & Signup Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ff9f43;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ff6f00;
+}
+
+/* Toggle Button */
+.toggle-btn {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+    transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Sign Up Link */
+p {
+    margin-top: 15px;
+    color: white;
+    font-size: 14px;
+}
+
+p a {
+    color: yellow;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+p a:hover {
+    color: #ffeb3b;
+}

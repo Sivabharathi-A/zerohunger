@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer & Consumer Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="flip-box" id="flipBox">
+            <div class="flip-box-inner">
+
+                
+                <div class="flip-box-front farmer">
+                    <h2>Farmer Login</h2>
+                    <form id="farmerLoginForm" onsubmit="return handleFarmerLogin(event)">
+                        <input type="text" placeholder="Farmer ID" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                    </form>
+                    
+                    <p>Don't have an account? <a href="#" onclick="showSignup('farmer')">Sign Up</a></p>
+                    <button class="toggle-btn" onclick="flipCard()">Consumer Login</button>
+                </div>
+
+                
+                <div class="flip-box-back consumer">
+                    <h2>Consumer Login</h2>
+                    <form id="consumerLoginForm" onsubmit="return handleConsumerLogin(event)">
+                        <input type="text" placeholder="Consumer ID" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" onclick="showSignup('consumer')">Sign Up</a></p>
+                    <button class="toggle-btn" onclick="flipCard()">Farmer Login</button>
+                </div>
+
+                
+                <div class="flip-box-front signup-form farmer-signup">
+                    <h2>Farmer Signup</h2>
+                    <form id="farmerSignupForm" onsubmit="return handleFarmerSignup(event)">
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="text" name="userId" placeholder="Farmer ID" required>
+                        <input type="email" name="email" placeholder="Email ID" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                        <button type="button" onclick="showTerms('farmer')">Sign Up</button>
+                    </form>
+                    <p>Already have an account? <a href="#" onclick="hideSignup()">Login</a></p>
+                </div>
+
+                
+                <div class="flip-box-back signup-form consumer-signup">
+                    <h2>Consumer Signup</h2>
+                    <form id="consumerSignupForm" onsubmit="return handleConsumerSignup(event)">
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="text" name="userId" placeholder="Consumer ID" required>
+                        <input type="email" name="email" placeholder="Email ID" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                        <button type="button" onclick="showTerms('consumer')">Sign Up</button>
+                    </form>
+                    <p>Already have an account? <a href="#" onclick="hideSignup()">Login</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="terms-popup" id="termsPopup">
+        <h2>Terms and Conditions</h2>
+        <p id="termsContent"></p>
+        <label>
+            <input type="checkbox" id="termsCheckbox"> I agree to the terms and conditions.
+        </label><br>
+        <button onclick="confirmTerms()">Confirm</button>
+    </div>
+
+
+</body>
+
+</html>
